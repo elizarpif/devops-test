@@ -1,0 +1,14 @@
+FROM python:3.8-slim
+
+COPY . /app
+
+WORKDIR /app
+
+RUN pip install flask
+
+EXPOSE 5000
+
+ENTRYPOINT ["python"]
+
+CMD ["app.py"]
+

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod                                           
+metadata:
+  name: app-python                                
+spec:                                            
+  containers:
+    - image: lizpif/app_python
+      name: app-python                            
+      ports:
+        - containerPort: 5000
