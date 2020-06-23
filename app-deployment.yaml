@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: app-python-deployment
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: app-python                                          # 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate                                   # 3
+    rollingUpdate: 
+      maxUnavailable: 1                                   # 4
+      maxSurge: 1                                         # 5
+  template:                                               # 6
+    metadata:
+      labels:
+        app: app-python                                 # 7
+    spec:
+      containers:
+        - image: lizpif/app_python
+          imagePullPolicy: Always
+          name: app-python                            
+          ports:
+            - containerPort: 5000
